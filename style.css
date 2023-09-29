@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&family=Space+Grotesk:wght@400;700&display=swap');
 
+@font-face {
+  font-family: 'loading'; /* Name you will use to reference the font */
+  src: url('fonts/1.otf') format('truetype'); /* Path to your font file */
+}
+
 @media screen and (max-width: 768px) {
 
 }
@@ -9,7 +14,7 @@
 }
 
 body {
-  background-color:beige;
+  background-color: white;
   font-family: 'Manrope', sans-serif;
   
   }
@@ -23,8 +28,6 @@ body {
 
 }
 
-
-
 ::-webkit-scrollbar-thumb{
   box-shadow:inset 0px 0px 2vh 0.3vh #d5e5ff;
   background:linear-gradient(to right, yellow 3%, #00f000 70%);
@@ -35,6 +38,35 @@ body {
   text-decoration:none;
   
 }
+
+
+.table{
+  margin: 5%; 
+  /* margin: 20px; */
+  position: relative;
+  /* top:20px;  */
+  border-spacing: 0 5px;
+
+}
+
+.table td {
+  color: blue; /* Change to the color you want */
+}
+
+.sub-chapter::before {
+  content: "• "; /* Add a centered dot before the sub-chapter text */
+  padding-right: 5px; /* Add some space between the dot and the text */
+}
+
+.sub-chapter {
+  padding-left: 20px; /* Adjust as needed */
+}
+
+.highlight {
+  background-color: #FFCFFF;
+  box-shadow: 0px 0px 0px 3px #FFCFFF inset;
+}
+
 
 .imageContainer {
   display: flex;
@@ -72,6 +104,11 @@ code {
   text-align: left;
 }
 
+a{
+  text-decoration: none;
+  color:blue;
+  font-style: italic;
+}
 
 .categoriesMenu {
   position: fixed;
@@ -101,7 +138,7 @@ code {
 
 
 .categoriesMenuButton {
-  background-color:pink;
+  background-color:#FFCFFF;
   /* padding: 10px 20px; */
   /* border: none; */
   border-radius: 150px;
@@ -112,7 +149,7 @@ code {
   width: 240px;
   transition: background-color 0.3s ease-in-out;
   
-  border: 0.5px #777777 solid;
+  border: 0.5px blue solid;
 
   border-radius:  30%;
 
@@ -159,9 +196,11 @@ code {
 h1 {
   text-align: left;
   margin: 5%;
-  font-size: 1.5em;
+  font-size: 1em;
   color: blue;
   /* padding: 30px 30px; */
+  font-family: 'loading', sans-serif; 
+  max-width: 80%; 
 }
 
 /* section Title */
@@ -169,8 +208,10 @@ h1 {
 h2{
   text-align: left;
   margin: 5%;
-  font-size:3em;
-  color: yellow;
+  font-size:4em;
+  color: black;
+  text-shadow: #00f000;
+
 }
 
 /* normalTExt */
@@ -178,8 +219,9 @@ h2{
 h3 {
   text-align: left;
   margin: 5%;
-  font-size: 1.4em;
-  color: green;
+  font-size: 1em;
+  color: black;
+  max-width: 80%; 
 }
 
 /* codeFont */
@@ -201,6 +243,13 @@ h6 {
   padding: 0;
 }
 
+p {
+  text-align: center;
+  font-size: .7em;
+  color: black;
+  margin: 20px;
+  padding: 0;
+}
 
 .dropdown-menu {
   display: none;
