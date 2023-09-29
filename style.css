@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&family=Space+Grotesk:wght@400;700&display=swap');
+
+@media screen and (max-width: 768px) {
+
+}
+
+body {
+  background-color:beige;
+  font-family: 'Manrope', sans-serif;
+  
+  }
+
+::-webkit-scrollbar{
+  width: 37px;
+}
+
+::-webkit-scrollbar-track{
+  background-color:beige;
+
+}
+
+::-webkit-scrollbar-thumb{
+  box-shadow:inset 0px 0px 2vh 0.3vh #d5e5ff;
+  background:linear-gradient(to right, #ccff4e 2%, #00f000 70%);
+  /* background-color:pink; */
+  border-radius:50vh;
+  display:inline-block;
+  /* padding:1.2vh 1.2vh; */
+  text-decoration:none;
+  
+}
+
+
+.categoriesMenu {
+  position: fixed;
+  /* left: 2.18vh; */
+  top: 0%;
+  left: 0%;
+  bottom: 0%;
+  width: auto;
+  overflow-y: scroll;
+  /* display: flex;
+  flex-direction: column; */
+  align-items: center;
+  padding: 10px 10px;
+ margin-top: 10px 10px;
+  
+
+  
+  
+  /* background-color: black; */
+  /* border: 0.5px black solid;  */
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ... rest of your CSS ... */
+
+
+.categoriesMenuButton {
+  background-color:pink;
+  /* padding: 10px 20px; */
+  /* border: none; */
+  border-radius: 150px;
+  border: none; 
+  /* font-size: 26px; */
+  cursor: pointer;
+  height: 120px;
+  /* margin: 10px; */
+  width: 240px;
+  transition: background-color 0.3s ease-in-out;
+  
+  /* border: 0.5px #777777 solid; */
+  
+  
+}
+
+.categoriesMenuButton:hover {
+  background-color: blue;
+  color: #FFFFFF;
+  cursor: pointer;
+}
+
+
+
+.rightScreenContainer {
+  /* position: fixed;
+  left: 400px;
+  top: 0%;
+  width: 50%; */
+}
+  
+.rightScreenContent{
+  display: none;
+  /* background-color:pink; */
+  /* border-left: 0.5px black solid; */
+  position: fixed;
+  left: 350px;
+  top: 0%;
+  bottom: 0;
+  width: 79.6%;
+  overflow-y: scroll;
+}
+
+.active {
+  display: block;
+}
+
+.img{
+  position: relative;
+  left: 200px;
+}
+
+h1 {
+  text-align: right;
+  font-size: 3em;
+  color: white;
+}
+
+h2 {
+  text-align: left;
+  margin: 5%;
+  font-size: 1.4em;
+  color: green;
+}
+
+h3{
+  text-align: left;
+  font-size:3em;
+  color: black;
+}
+
+.dropdown-menu {
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.dropdown-menu.show {
+  display: block;
+  animation: dropdownAnimation 0.3s forwards;
+}
+
+@keyframes dropdownAnimation {
+  0% {
+      transform: translateY(-100%);
+  }
+  100% {
+      transform: translateY(0);
+  }
+}
+
