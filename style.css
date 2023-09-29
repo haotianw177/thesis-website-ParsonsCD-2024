@@ -4,6 +4,10 @@
 
 }
 
+*{
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="32" height="32"><circle cx="8" cy="8" r="7" fill="black"/></svg>') 8 8, auto;
+}
+
 body {
   background-color:beige;
   font-family: 'Manrope', sans-serif;
@@ -15,19 +19,57 @@ body {
 }
 
 ::-webkit-scrollbar-track{
-  background-color:beige;
+  /* background-color:beige; */
 
 }
 
+
+
 ::-webkit-scrollbar-thumb{
   box-shadow:inset 0px 0px 2vh 0.3vh #d5e5ff;
-  background:linear-gradient(to right, #ccff4e 2%, #00f000 70%);
+  background:linear-gradient(to right, yellow 3%, #00f000 70%);
   /* background-color:pink; */
   border-radius:50vh;
   display:inline-block;
   /* padding:1.2vh 1.2vh; */
   text-decoration:none;
   
+}
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.preWrapper {
+  background-color: #f0f0f0;
+  border: 1px solid black;
+  margin: 5%;
+  /* width: 80%; */
+  /* height: 20%; */
+  overflow: hidden;
+
+  border-radius: 50px;
+}
+
+
+
+pre {
+  background-color: #f0f0f0;
+  margin: 0; /* reduced margin to 0 to fit within .preWrapper */
+  width: 100%;
+  height: auto;
+  overflow-x: auto;
+  overflow-y: auto;
+  max-height: 200px;
+  border-radius: 40px; /* reduced border-radius to fit within .preWrapper's border-radius */
+}
+
+code {
+  font-family: "Courier New", Courier, monospace;
+  text-align: left;
 }
 
 
@@ -42,8 +84,9 @@ body {
   /* display: flex;
   flex-direction: column; */
   align-items: center;
-  padding: 10px 10px;
- margin-top: 10px 10px;
+  padding: 72px 30px;
+  /* margin: 5%; */
+ /* margin-top: 110px 101px; */
   
 
   
@@ -52,12 +95,7 @@ body {
   /* border: 0.5px black solid;  */
 }
 
-.imageContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
+
 
 /* ... rest of your CSS ... */
 
@@ -69,21 +107,21 @@ body {
   border-radius: 150px;
   border: none; 
   /* font-size: 26px; */
-  cursor: pointer;
   height: 120px;
   /* margin: 10px; */
   width: 240px;
   transition: background-color 0.3s ease-in-out;
   
-  /* border: 0.5px #777777 solid; */
-  
-  
+  border: 0.5px #777777 solid;
+
+  border-radius:  30%;
+
 }
 
 .categoriesMenuButton:hover {
   background-color: blue;
-  color: #FFFFFF;
-  cursor: pointer;
+  /* color: #FFFFFF;
+  cursor: pointer; */
 }
 
 
@@ -116,24 +154,53 @@ body {
   left: 200px;
 }
 
+/* firstPageTExt */
+
 h1 {
-  text-align: right;
-  font-size: 3em;
-  color: white;
+  text-align: left;
+  margin: 5%;
+  font-size: 1.5em;
+  color: blue;
+  /* padding: 30px 30px; */
 }
 
-h2 {
+/* section Title */
+
+h2{
+  text-align: left;
+  margin: 5%;
+  font-size:3em;
+  color: yellow;
+}
+
+/* normalTExt */
+
+h3 {
   text-align: left;
   margin: 5%;
   font-size: 1.4em;
   color: green;
 }
 
-h3{
+/* codeFont */
+
+h4{
   text-align: left;
-  font-size:3em;
-  color: black;
+  margin: 5%;
+  font-size: 1.5em;
+  color: blue;
 }
+
+/* menuBarFont */
+
+h6 {
+  text-align: center;
+  font-size: 2em;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
 
 .dropdown-menu {
   display: none;
