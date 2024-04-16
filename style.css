@@ -15,6 +15,17 @@ body {
   
   }
 
+  .header {
+    position: fixed;  /* Fixed positioning to keep it at the specified spot */
+    top: -10px;         /* 10% from the top */
+    left: 50%;        /* Centered horizontally */
+    transform: translateX(-50%); /* Shift it back by half its width to truly center it */
+    z-index: 1000;    /* Ensures it stays on top of other content */
+    /* padding: 10px 20px;  */
+    width: auto; 
+    text-align: center;
+  }
+
 .imageContainer {
   display: flex;
   flex-direction: column;
@@ -23,13 +34,12 @@ body {
 }
 
 .preWrapper {
-  background-color: #f0f0f0;
+  /* background-color: #f0f0f0; */
   border: 1px solid black;
   margin: 5%;
   /* width: 80%; */
   /* height: 20%; */
   overflow: hidden;
-
   border-radius: 50px;
 }
 
@@ -77,8 +87,6 @@ a{
   cursor: pointer; */
 }
 
-
-
 .rightScreenContainer {
   /* position: fixed;
   left: 400px;
@@ -107,19 +115,10 @@ a{
   left: 200px;
 }
 
-/* firstPageTExt */
-
 h1 {
-  text-align: left;
-  margin: 5%;
-  font-size: 1em;
-  color: blue;
-  /* padding: 30px 30px; */
-  font-family: 'loading', sans-serif; 
-  max-width: 80%; 
+  font-size: 3em;
+  color: black;
 }
-
-/* section Title */
 
 h2{
   text-align: left;
