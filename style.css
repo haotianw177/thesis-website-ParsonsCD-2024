@@ -67,18 +67,18 @@ a{
 }
 
 .categoriesMenuButton {
-  background-color:white;
-  /* padding: 10px 20px; */
-  /* border: none; */
-  border-radius: 10px;
-  border: none; 
-  /* font-size: 26px; */
-  height: 20px;
+  background-color: white;
+  height: 50px;  /* Adjust the height to ensure enough vertical space */
+  width: 240px;  /* Maintain the width to keep uniformity */
+  border-radius: 20px;
+  border: 0.5px solid blue;
   margin: 10px;
-  width: 240px;
   transition: background-color 0.3s ease-in-out;
-  border: 0.5px blue solid;
 
+  display: flex;         /* Use flexbox to center the text */
+  align-items: center;   /* Align text vertically */
+  justify-content: center; /* Center text horizontally */
+  text-align: center;    /* Ensure text is centered even if it wraps */
 }
 
 .categoriesMenuButton:hover {
