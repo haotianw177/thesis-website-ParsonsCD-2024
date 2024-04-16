@@ -129,8 +129,8 @@ a {
   border: none;
   display: flex;
   align-items: center;
-  justify-content: center;
-  text-align: center;
+  justify-content: flex-start; /* Aligns text to the left */
+  text-align: left;
 }
 
 
