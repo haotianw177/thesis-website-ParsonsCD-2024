@@ -1,5 +1,3 @@
-// "la la la la la la"
-
 const textContainer = document.querySelector('.rightScreenContainer');
 const textItems = textContainer.querySelectorAll('.rightScreenContent');
 const toggleButtons = document.querySelectorAll('.categoriesMenuButton');

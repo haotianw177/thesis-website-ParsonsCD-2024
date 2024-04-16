@@ -5,7 +5,9 @@
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="32" height="32"><circle cx="8" cy="8" r="7" fill="black"/></svg>') 6 6, auto;
 }
 
-body {
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
   background-color: white !important;
   -webkit-font-smoothing: antialiased;
 }
@@ -18,6 +20,15 @@ body {
   z-index: 1000;
   width: auto;
   text-align: center;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+img, video, canvas, iframe {
+  max-width: 100%;
+  height: auto;
 }
 
 .imageContainer {
@@ -165,20 +176,50 @@ p {
   }
 }
 
-@media screen and (max-width: 768px) {
-  /* Hide dropdown menu initially on mobile */
-  #dropdownMenu {
-      display: none;
-  }
-
-  .header h1 {
-    font-size: 2em; /* Smaller font size for mobile screens */
-  }
-}
-
-/* For larger screens, always show the dropdown menu */
+/* Hide toggle button on larger screens */
+/* Hide toggle button on larger screens */
 @media screen and (min-width: 769px) {
-  #dropdownMenu {
-      display: block !important; /* Override any inline styles */
+  #toggleButton {
+      display: none; /* Ensure toggle button is hidden in laptop view */
   }
 }
+
+/* Responsive adjustments for mobile screens */
+@media screen and (max-width: 768px) {
+  /* Adjust header for mobile view */
+  .header {
+      position: fixed;  /* Keep header fixed */
+      top: 0;  /* Top of viewport */
+      left: 0;  /* Left of viewport */
+      transform: none;  /* Clear any transforms to avoid misalignment */
+      z-index: 1002;  /* High z-index to keep on top */
+      width: calc(100% - 50px);  /* Full width minus toggle button width */
+      padding: 10px 0;  /* Padding to give some space */
+      box-sizing: border-box;  /* Include padding in width calculation */
+      background: none;  /* No background color */
+  }
+
+  /* Position toggle button on top right for mobile view */
+  #toggleButton {
+      display: block;  /* Make toggle button visible */
+      position: fixed;  /* Fix position to viewport */
+      top: 0;  /* Align to the top */
+      right: 0;  /* Align to the right */
+      width: 50px;  /* Set width for button */
+      height: 50px;  /* Set height for button */
+      text-align: center;  /* Center icon within button */
+      background: none;  /* No background color */
+      z-index: 1001;  /* Ensure it's on top but below header */
+  }
+
+  .hahaList {
+      padding-top: 60px;  /* Enough padding to avoid overlap with header/toggle button */
+  }
+
+  /* Adjust font size for header text to fit smaller screens */
+  .header h1 {
+      font-size: 1.5em;  /* Reduce font size for mobile */
+      margin: 0;  /* Remove margins */
+  }
+}
+
