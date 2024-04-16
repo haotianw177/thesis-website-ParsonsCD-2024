@@ -1,3 +1,5 @@
+// la la la la la la________________________ what loading time?
+
 const textContainer = document.querySelector('.rightScreenContainer');
 const textItems = textContainer.querySelectorAll('.rightScreenContent');
 const toggleButtons = document.querySelectorAll('.categoriesMenuButton');
