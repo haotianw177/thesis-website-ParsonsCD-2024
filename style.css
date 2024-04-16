@@ -41,8 +41,9 @@ a {
 }
 
 .hahaList {
+  border: 1px solid black;
   position: fixed;
-  top: 10%;
+  top: 0%;
   left: 0%;
   bottom: 0%;
   width: auto;
@@ -161,5 +162,23 @@ p {
 
   .active {
       display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Hide dropdown menu initially on mobile */
+  #dropdownMenu {
+      display: none;
+  }
+
+  .header h1 {
+    font-size: 2em; /* Smaller font size for mobile screens */
+  }
+}
+
+/* For larger screens, always show the dropdown menu */
+@media screen and (min-width: 769px) {
+  #dropdownMenu {
+      display: block !important; /* Override any inline styles */
   }
 }
