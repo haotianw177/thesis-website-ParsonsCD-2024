@@ -31,6 +31,38 @@ img, video, canvas, iframe {
   height: auto;
 }
 
+@keyframes rotateImage {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+@media screen and (min-width: 769px) {
+  img[src="images/earth.png"] {
+      animation: rotateImage 20s linear infinite;
+      display: block;
+      position: fixed;  
+      top: 10%;        
+      left: 20%;     
+      transform: translate(-50%, -50%); 
+      max-width: 30%;   
+      max-height: 30%; 
+      z-index: 1000;    
+      pointer-events: none;  
+  }
+}
+
+@media screen and (max-width: 768px) {
+  img[src="images/earth.png"] {
+      display: none; 
+  }
+}
+
+
+
 .imageContainer {
   display: flex;
   flex-direction: column;
@@ -38,12 +70,12 @@ img, video, canvas, iframe {
   justify-content: center;
 }
 
-.preWrapper {
+/* .preWrapper {
   border: 1px solid black;
   margin: 5%;
   overflow: hidden;
   border-radius: 50px;
-}
+} */
 
 a {
   text-decoration: none;
@@ -52,25 +84,26 @@ a {
 }
 
 .hahaList {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   position: fixed;
   top: 0%;
   left: 0%;
   bottom: 0%;
-  width: auto;
+  width: 30%;
   overflow-y: scroll;
   align-items: center;
   padding: 72px 30px;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  background-color: #00f000;
 }
 
 .categoriesMenuButton {
   background-color: white;
-  height: 50px;
+  height: 40px;
   width: 240px;
   border-radius: 20px;
-  margin: 10px;
+  margin: 50px;
   transition: background-color 0.3s ease-in-out;
   border: none;
   display: flex;
@@ -83,15 +116,18 @@ a {
   background-color: blue;
 }
 
-.rightScreenContainer {}
+.rightScreenContainer {
+  /* background-color: blue; */
+}
 
 .rightScreenContent {
+  background-color: blue;
   display: none;
   position: fixed;
   left: 30%;
   top: 0%;
   bottom: 0;
-  width: 79.6%;
+  width: 70%;
   overflow-y: scroll;
 }
 
@@ -141,7 +177,7 @@ h4 {
 
 h6 {
   text-align: center;
-  font-size: 2em;
+  font-size: 1.7em;
   color: black;
   margin: 0;
   padding: 0;
