@@ -5,20 +5,22 @@ const toggleButtons = document.querySelectorAll('.categoriesMenuButton');
 let currentActiveText = 0;
 
 textItems[currentActiveText].classList.add('active');
+toggleButtons[currentActiveText].style.display = 'block'; // Ensure initial button is visible
 
 window.setActiveText = function (index) {
-  if (textItems.length > 0 && index >= 0 && index < textItems.length) {
-    textItems[currentActiveText].classList.remove('active');
-    toggleButtons[currentActiveText].style.backgroundColor = "";
+  textItems.forEach(item => item.classList.remove('active'));
+  toggleButtons.forEach(button => button.style.display = 'none'); // Hide all buttons
 
+  if (textItems[index]) { // Check if the corresponding content exists
     currentActiveText = index;
-
     textItems[currentActiveText].classList.add('active');
-    toggleButtons[currentActiveText].style.backgroundColor = "yellow";
+    toggleButtons[currentActiveText].style.display = 'block'; // Show the current button
+    document.getElementById('toggleButton').style.display = 'block'; // Always show the menu button
+  } else {
+    // Handle the case where there is no corresponding content
+    document.getElementById('toggleButton').style.display = 'block'; // Ensure menu button is visible
   }
 }
-
-
 
 for (let i = 0; i < toggleButtons.length; i++) {
   toggleButtons[i].addEventListener('click', function() {
@@ -30,15 +32,10 @@ const toggleButton = document.getElementById('toggleButton');
 const dropdownMenu = document.getElementById('dropdownMenu');
 
 toggleButton.addEventListener('click', () => {
-    if (dropdownMenu.classList.contains('show')) {
-        dropdownMenu.classList.remove('show');
-        dropdownMenu.style.display = 'none';  // Hide immediately without animation
+    if (dropdownMenu.style.display === 'block') {
+        dropdownMenu.style.display = 'none';  // Hide the dropdown
     } else {
-        dropdownMenu.style.display = 'block';  // Show immediately without animation
-        // Allow a frame to render with display: block, then add the animation class
-        requestAnimationFrame(() => {
-            dropdownMenu.classList.add('show');
-        });
+        dropdownMenu.style.display = 'block';  // Show the dropdown
+        toggleButtons.forEach(button => button.style.display = 'block'); // Show all buttons to allow selection
     }
 });
-
