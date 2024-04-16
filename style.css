@@ -1,30 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@300&family=Space+Grotesk:wght@400;700&display=swap');
-
-@font-face {
-  font-family: 'loading'; /* Name you will use to reference the font */
-  src: url('fonts/1.otf') format('truetype'); /* Path to your font file */
-}
-
-*{
-  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="32" height="32"><circle cx="8" cy="8" r="7" fill="black"/></svg>') 8 8, auto;
+* {
+  font-family: "neue-haas-grotesk-text", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="32" height="32"><circle cx="8" cy="8" r="7" fill="black"/></svg>') 6 6, auto;
 }
 
 body {
-  background-color: white;
-  font-family: 'Manrope', sans-serif;
-  
-  }
+  background-color: white !important;
+  -webkit-font-smoothing: antialiased;
+}
 
-  .header {
-    position: fixed;  /* Fixed positioning to keep it at the specified spot */
-    top: -10px;         /* 10% from the top */
-    left: 50%;        /* Centered horizontally */
-    transform: translateX(-50%); /* Shift it back by half its width to truly center it */
-    z-index: 1000;    /* Ensures it stays on top of other content */
-    /* padding: 10px 20px;  */
-    width: auto; 
-    text-align: center;
-  }
+.header {
+  position: fixed;
+  top: -10px;
+  left: 200px;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: auto;
+  text-align: center;
+}
 
 .imageContainer {
   display: flex;
@@ -34,83 +28,73 @@ body {
 }
 
 .preWrapper {
-  /* background-color: #f0f0f0; */
   border: 1px solid black;
   margin: 5%;
-  /* width: 80%; */
-  /* height: 20%; */
   overflow: hidden;
   border-radius: 50px;
 }
 
-a{
+a {
   text-decoration: none;
-  color:blue;
+  color: blue;
   font-style: italic;
 }
 
 .hahaList {
   position: fixed;
-  /* left: 2.18vh; */
-  top: 0%;
+  top: 10%;
   left: 0%;
   bottom: 0%;
   width: auto;
   overflow-y: scroll;
-  /* display: flex;
-  flex-direction: column; */
   align-items: center;
   padding: 72px 30px;
-  /* margin: 5%; */
- /* margin-top: 110px 101px; */
-
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .categoriesMenuButton {
   background-color: white;
-  height: 50px;  /* Adjust the height to ensure enough vertical space */
-  width: 240px;  /* Maintain the width to keep uniformity */
+  height: 50px;
+  width: 240px;
   border-radius: 20px;
-  border: 0.5px solid blue;
   margin: 10px;
   transition: background-color 0.3s ease-in-out;
-
-  display: flex;         /* Use flexbox to center the text */
-  align-items: center;   /* Align text vertically */
-  justify-content: center; /* Center text horizontally */
-  text-align: center;    /* Ensure text is centered even if it wraps */
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .categoriesMenuButton:hover {
   background-color: blue;
-  /* color: #FFFFFF;
-  cursor: pointer; */
 }
 
-.rightScreenContainer {
-  /* position: fixed;
-  left: 400px;
-  top: 0%;
-  width: 50%; */
-}
-  
-.rightScreenContent{
+.rightScreenContainer {}
+
+.rightScreenContent {
   display: none;
-  /* background-color:pink; */
-  /* border-left: 0.5px black solid; */
   position: fixed;
-  left: 350px;
+  left: 30%;
   top: 0%;
   bottom: 0;
   width: 79.6%;
   overflow-y: scroll;
 }
 
+.rightScreenContent img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
 .active {
   display: block;
 }
 
-.img{
+.img {
   position: relative;
   left: 200px;
 }
@@ -120,35 +104,28 @@ h1 {
   color: black;
 }
 
-h2{
+h2 {
   text-align: left;
   margin: 5%;
-  font-size:4em;
+  font-size: 4em;
   color: black;
   text-shadow: #00f000;
-
 }
-
-/* normalTExt */
 
 h3 {
   text-align: left;
   margin: 5%;
   font-size: 1em;
   color: black;
-  max-width: 80%; 
+  max-width: 80%;
 }
 
-/* codeFont */
-
-h4{
+h4 {
   text-align: left;
   margin: 5%;
   font-size: 1.5em;
   color: blue;
 }
-
-/* menuBarFont */
 
 h6 {
   text-align: center;
@@ -168,21 +145,21 @@ p {
 
 @media screen and (max-width: 768px) {
   .hahaList {
-    width: 100%;  /* Make the menu full-width */
-    position: static;  /* Reset position so it flows in normal document flow */
-    height: auto;  /* Adjust height to content */
-    overflow-y: visible;  /* No scrolling needed when menu is full-width */
-    display: block;  /* Ensures that the menu is visible */
+      width: 100%;
+      position: static;
+      height: auto;
+      overflow-y: visible;
+      display: block;
   }
 
   .rightScreenContent {
-    position: static; /* Let the content flow naturally */
-    width: 100%; /* Full width for easier reading on small devices */
-    display: none; /* Initially hide all content */
-    border: none; /* Optionally remove border */
+      position: static;
+      width: 100%;
+      display: none;
+      border: none;
   }
 
   .active {
-    display: block; /* Only the active content will show */
+      display: block;
   }
 }
