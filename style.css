@@ -179,19 +179,19 @@ img, video, canvas, iframe {
 }
 
 #imagePreviewModal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1001; /* Sit on top */
+  display: none;
+  position: fixed;
+  z-index: 1001;
   left: 0;
   top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-  display: flex;
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+  align-items: center;
+  justify-content: center;
 }
+
 
 #imagePreviewModal img {
   max-width: 90%; /* Responsive width, maximum of 80% of the screen width */
