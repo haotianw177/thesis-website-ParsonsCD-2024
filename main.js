@@ -1,4 +1,7 @@
 // la la la la la la________________________ what loading time?
+// hand-made by Haotian Wang, 04/17/2024
+// i was listening to Grimes on repeat
+// for maintenance request email @haotianwangdesign@gmail.com
 
 const textContainer = document.querySelector('.rightScreenContainer');
 const textItems = textContainer.querySelectorAll('.rightScreenContent');
@@ -49,3 +52,24 @@ function displayButtonsAccordingToViewport() {
 
 window.addEventListener('load', displayButtonsAccordingToViewport);
 window.addEventListener('resize', displayButtonsAccordingToViewport);
+
+$(document).ready(function() {
+  // When an image is clicked
+  $('img').click(function(e) {
+    e.stopPropagation(); // Prevent the click event from bubbling up to higher elements
+    var src = $(this).attr('src'); // Get the source of the clicked image
+    $('#imagePreviewModal img').attr('src', src); // Set the source in the modal
+    $('#imagePreviewModal').fadeIn(); // Display the modal
+  });
+
+  // Click anywhere on the modal (including the image) to close it
+  $('#imagePreviewModal').click(function() {
+    $(this).fadeOut(); // Hide the modal
+  });
+
+  // Ensure that clicking on the modal image also propagates to close the modal
+  $('#imagePreviewModal img').click(function(e) {
+    e.stopPropagation(); // Normally stops the click from propagating
+    $('#imagePreviewModal').fadeOut(); // But we manually trigger the fadeOut
+  });
+});

@@ -2,6 +2,7 @@
   font-family: "neue-haas-grotesk-text", sans-serif;
   font-weight: 400;
   font-style: normal;
+  box-sizing: border-box;
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="32" height="32"><circle cx="8" cy="8" r="7" fill="black"/></svg>') 6 6, auto;
 }
 
@@ -10,26 +11,161 @@ html, body {
   overflow-x: hidden;
   background-color: white !important;
   -webkit-font-smoothing: antialiased;
+  margin: 0;  
+  padding: 0;  
+  width: 100%; 
+  height: 100%; 
 }
 
-.header {
+a {
+  text-decoration: none;
+  color: blue;
+  font-style: italic;
+}
+
+.leftContainer {
+  position: relative;  /* This is correct as it keeps the container in the normal document flow */
+  top: 0;
+  left: 20px;  /* All children will inherit this starting position */
+  width: 30%;
+  overflow-y: auto;  /* Allows scrolling within the container */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* Ensures all children align to the left edge */
+  padding: 10px 0;  /* Maintains padding for all children */
+  box-sizing: border-box;  /* Includes padding in width calculation */
+}
+
+.headerInfo, .categoriesMenuButton, .info {
+  width: 85%;  /* Standardizes width for alignment */
+  background-color: white;
+  padding: 5px;  /* Ensures padding inside each element */
+  border-radius: 20px;
+  margin: 10px 0;  /* Standardizes and adds vertical spacing */
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;  /* Ensures content aligns to the left */
+  text-align: left;
+}
+
+.categoriesMenuButton {
+  background-color: white;
+  height: auto;  /* Adjusts height to content */
+  padding: 5px;
+  border-radius: 20px;
+  margin: 10px 0;
+  transition: background-color 0.3s ease-in-out;
+  display: block;  /* Changed from flex to block for standard flow */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.categoriesMenuButton:hover {
+  background-color: blue;  /* Keeps hover effect */
+  text-decoration: underline;
+}
+
+.info {
+  margin-top: 20px;  /* Adds a bit more space after the last menu button */
+}
+
+.rightScreenContainer {
+  /* background-color: blue; */
+}
+
+.rightScreenContent {
+  padding-top: 20px;
+  display: none;
   position: fixed;
-  top: -10px;
-  left: 200px;
-  transform: translateX(-50%);
-  z-index: 1000;
-  width: auto;
-  text-align: center;
+  left: 30%;
+  top: 0%;
+  bottom: 0;
+  width: 70%;
+  overflow-y: scroll;
 }
 
-.header a.header-link {
-  text-decoration: none;  /* Removes the default underline of hyperlinks */
-  color: black;  /* Adjust the color to match your design */
-  cursor: pointer;  /* Changes the mouse cursor to a pointer on hover */
+.rightScreenContent h2 {
+  /* Apply additional top margin if needed to align perfectly with the p element */
+  margin-top: 0;  /* Adjust this to ensure alignment */
 }
 
-.header a.header-link:hover {
-  text-decoration: underline;  /* Adds underline on hover */
+/* .rightScreenContent img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  object-fit: contain;
+} */
+
+.imageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.imageContainer img {
+  width: auto;  /* Keeps width controlled by the container or image size */
+  height: auto;  /* Maintains the aspect ratio */
+  margin-right: 30px;
+  margin-bottom: 30px;  /* Adds margin only at the bottom of each image */
+  display: block;  /* Ensures the image block behaves properly */
+}
+
+.imageContainer img:last-child {
+  margin-bottom: 30px;  /* Removes bottom margin from the last image to maintain container padding */
+}
+
+.active {
+  display: block;
+}
+
+h1 {
+  font-size: 2em;
+  color: black;
+}
+
+/* h2 is for project  title */
+h2 {
+  text-align: left;
+  /* margin: 5%; */
+  font-size: 3em;
+  color: black;
+  text-shadow: #00f000;
+}
+
+/* h3 is for project description */
+h3 {
+  text-align: left;
+  /* margin: 5%; */
+  font-size: 1em;
+  color: black;
+  max-width: 80%;
+}
+
+h4 {
+  text-align: left;
+  margin: 5%;
+  font-size: 1.5em;
+  color: blue;
+}
+
+/* h6 is for student names */
+h6 {
+  text-align: left;
+  font-size: 1.5em;
+  color: black;
+  margin: 0;
+  padding: 0;
+}
+
+/* p is for the leftContainer intro and end text */
+p {
+  text-align: left;
+  font-size: 1.6em;
+  color: black;
+  margin: 20px;
+  padding: 0;
 }
 
 
@@ -41,6 +177,28 @@ img, video, canvas, iframe {
   max-width: 100%;
   height: auto;
 }
+
+#imagePreviewModal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1001; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+}
+
+#imagePreviewModal img {
+  max-width: 90%; /* Responsive width, maximum of 80% of the screen width */
+  max-height: 90%; /* Maximum of 80% of the screen height */
+  display: block; /* Ensure it displays as block to enable margins */
+}
+
 
 @keyframes rotateImage {
   from {
@@ -56,8 +214,8 @@ img, video, canvas, iframe {
       animation: rotateImage 20s linear infinite;
       display: block;
       position: fixed;  
-      top: 10%;        
-      left: 20%;     
+      top: 30%;        
+      left: 10%;     
       transform: translate(-50%, -50%); 
       max-width: 30%;   
       max-height: 30%; 
@@ -72,149 +230,8 @@ img, video, canvas, iframe {
   }
 }
 
-
-
-.imageContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.imageContainer img {
-  margin: 10px;  /* Adds margin around each image */
-  width: calc(100% - 20px);  /* Adjusts the width to account for the margin */
-  height: auto;  /* Maintains the aspect ratio of the images */
-  display: block;  /* Removes bottom space/margin typical of inline-block elements */
-}
-
-
-/* .preWrapper {
-  border: 1px solid black;
-  margin: 5%;
-  overflow: hidden;
-  border-radius: 50px;
-} */
-
-a {
-  text-decoration: none;
-  color: blue;
-  font-style: italic;
-}
-
-.hahaList {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 30%;
-  overflow-y: scroll;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;  
-  padding: 172px 30px 30px;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-  box-sizing: border-box; 
-}
-
-.categoriesMenuButton {
-  background-color: white;
-  height: 40px;
-  width: 240px;
-  border-radius: 20px;
-  margin: 10px 0; 
-  transition: background-color 0.3s ease-in-out;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start; /* Aligns text to the left */
-  text-align: left;
-}
-
-
-.categoriesMenuButton:hover {
-  background-color: blue;
-}
-
-.rightScreenContainer {
-  /* background-color: blue; */
-}
-
-.rightScreenContent {
-  /* background-color: blue; */
-  display: none;
-  position: fixed;
-  left: 30%;
-  top: 0%;
-  bottom: 0;
-  width: 70%;
-  overflow-y: scroll;
-}
-
-.rightScreenContent img {
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-  object-fit: contain;
-}
-
-.active {
-  display: block;
-}
-
-.img {
-  position: relative;
-  left: 200px;
-}
-
-h1 {
-  font-size: 2em;
-  color: black;
-}
-
-h2 {
-  text-align: left;
-  /* margin: 5%; */
-  font-size: 3em;
-  color: black;
-  text-shadow: #00f000;
-}
-
-h3 {
-  text-align: left;
-  margin: 5%;
-  font-size: 1em;
-  color: black;
-  max-width: 80%;
-}
-
-h4 {
-  text-align: left;
-  margin: 5%;
-  font-size: 1.5em;
-  color: blue;
-}
-
-h6 {
-  text-align: center;
-  font-size: 1.7em;
-  color: black;
-  margin: 0;
-  padding: 0;
-}
-
-p {
-  text-align: center;
-  font-size: .7em;
-  color: black;
-  margin: 20px;
-  padding: 0;
-}
-
 @media screen and (max-width: 768px) {
-  .hahaList {
+  .leftContainer {
       width: 100%;
       position: static;
       height: auto;
@@ -222,7 +239,12 @@ p {
       display: block;
   }
 
+  .rightScreenContent h2 {
+    margin-top: 0;  /* Adjust as necessary based on testing */
+  }
+
   .rightScreenContent {
+    padding-top: 20px;
       position: static;
       width: 100%;
       display: none;
@@ -244,18 +266,6 @@ p {
 
 /* Responsive adjustments for mobile screens */
 @media screen and (max-width: 768px) {
-  /* Adjust header for mobile view */
-  .header {
-      position: fixed;  /* Keep header fixed */
-      top: 0;  /* Top of viewport */
-      left: 0;  /* Left of viewport */
-      transform: none;  /* Clear any transforms to avoid misalignment */
-      z-index: 1002;  /* High z-index to keep on top */
-      width: calc(100% - 50px);  /* Full width minus toggle button width */
-      padding: 10px 0;  /* Padding to give some space */
-      box-sizing: border-box;  /* Include padding in width calculation */
-      background: none;  /* No background color */
-  }
 
   /* Position toggle button on top right for mobile view */
   #toggleButton {
@@ -270,14 +280,8 @@ p {
       z-index: 1001;  /* Ensure it's on top but below header */
   }
 
-  .hahaList {
+  .leftContainer {
       padding-top: 60px;  /* Enough padding to avoid overlap with header/toggle button */
-  }
-
-  /* Adjust font size for header text to fit smaller screens */
-  .header h1 {
-      font-size: 1.5em;  /* Reduce font size for mobile */
-      margin: 0;  /* Remove margins */
   }
 }
 
