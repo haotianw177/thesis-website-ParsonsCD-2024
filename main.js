@@ -56,21 +56,22 @@ window.addEventListener('resize', displayButtonsAccordingToViewport);
 $(document).ready(function() {
   // When an image is clicked
   $('img').click(function(e) {
-    e.stopPropagation();
-    var src = $(this).attr('src');
+    e.stopPropagation(); // Prevent the click event from bubbling up to higher elements
+    var src = $(this).attr('src'); // Get the source of the clicked image
     $('#imagePreviewModal img').attr('src', src);
-    $('#imagePreviewModal').css('display', 'flex');  // Make sure to set display to flex
-    $('#imagePreviewModal').fadeIn();
+    $('#imagePreviewModal').css('display', 'flex'); // Make sure to set display to flex
+    $('#imagePreviewModal').fadeIn(); // Display the modal
   });
   
-
-  // Click anywhere on the modal (including the image) to close it
+  // Click anywhere on the modal, including the image, to close it
   $('#imagePreviewModal').click(function() {
-    $(this).fadeOut();
+    $(this).fadeOut(); // Hide the modal
   });
   
-  $('#imagePreviewModal img').click(function(e) {
-    e.stopPropagation();
+  // Clicking on the modal image also closes the modal
+  // This handler is no longer stopping propagation, so clicks will bubble up to the modal
+  $('#imagePreviewModal img').click(function() {
+    $('#imagePreviewModal').fadeOut(); // Also hides the modal
   });
-  
 });
+
