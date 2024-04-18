@@ -1,7 +1,7 @@
 // la la la la la la________________________ what loading time?
 // hand-made by Haotian Wang, 04/17/2024
 // i was listening to Grimes on repeat
-// for maintenance request email @haotianwangdesign@gmail.com
+// for maintenance request email @haotianwang.design@gmail.com
 
 const textContainer = document.querySelector('.rightScreenContainer');
 const textItems = textContainer.querySelectorAll('.rightScreenContent');
