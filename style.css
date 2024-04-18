@@ -53,7 +53,7 @@ body::-webkit-scrollbar {
   background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
-.headerInfo, .categoriesMenuButton, .info {
+.headerInfo, .categoriesMenuButton, .footerInfo {
   width: 85%;  /* Standardizes width for alignment */
   background-color: white;
   padding: 5px;  /* Ensures padding inside each element */
@@ -297,6 +297,18 @@ img, video, canvas, iframe {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .leftContainer {
+      margin-left: 5px;  /* Adds left margin to leftContainer */
+      padding-top: 30px;  /* Keeps your existing top padding */
+  }
+
+  .rightScreenContainer {
+      margin-left: 5px;  /* Adds left margin to rightScreenContainer */
+  }
+}
+
+
 /* Hide toggle button on larger screens */
 /* Hide toggle button on larger screens */
 @media screen and (min-width: 769px) {
@@ -325,4 +337,29 @@ img, video, canvas, iframe {
       padding-top: 60px;  /* Enough padding to avoid overlap with header/toggle button */
   }
 }
+
+@media screen and (max-width: 768px) {
+  .leftContainer .headerInfo, .leftContainer .footerInfo {
+    display: block; /* Ensure these are visible */
+  }
+
+  .rightScreenContent {
+    display: none; /* Initially hide all right screen content */
+  }
+
+  #page1 {
+    display: none; /* Hide the right screen container that includes #fitScreenImage */
+  }
+
+  #fitScreenImage {
+    display: block; /* Ensure the initial image is displayed */
+    width: 100%; /* Adjust width to fit the screen */
+    margin-top: 10px; /* Add some top margin for spacing */
+  }
+
+  #toggleButton {
+    display: block;  /* Ensure toggle button is visible */
+  }
+}
+
 

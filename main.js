@@ -75,3 +75,54 @@ $(document).ready(function() {
   });
 });
 
+
+for (let i = 0; i < toggleButtons.length; i++) {
+  toggleButtons[i].addEventListener('click', function() {
+      // Hide all content sections before showing the selected one
+      textItems.forEach(item => {
+          item.style.display = 'none';  // Hide all content sections
+      });
+
+      setActiveText(i); // Set the clicked one as active
+
+      if (window.innerWidth <= 768) {  // Check if it's in mobile view
+          document.querySelectorAll('.leftContainer .headerInfo, .leftContainer .footerInfo').forEach(elem => {
+              elem.style.display = 'none';  // Hide text elements in the leftContainer
+          });
+          textItems[i].style.display = 'block';  // Display only the clicked content
+      }
+  });
+}
+
+toggleButton.addEventListener('click', () => {
+  let isMenuOpen = dropdownMenu.style.display === 'block' || dropdownMenu.style.display === '';
+  dropdownMenu.style.display = isMenuOpen ? 'none' : 'block';
+
+  if (isMenuOpen) {
+      document.querySelectorAll('.leftContainer .headerInfo, .leftContainer .footerInfo').forEach(elem => {
+          elem.style.display = 'block';  // Show text elements when menu is closed
+      });
+      textItems.forEach(item => item.style.display = 'none');  // Hide all content sections when closing menu
+  } else {
+      document.querySelectorAll('.leftContainer .headerInfo, .leftContainer .footerInfo').forEach(elem => {
+          elem.style.display = 'none';  // Hide text elements when menu is open
+      });
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.innerWidth <= 768) {
+      // Show only the header information and initial image on load for mobile
+      document.querySelector('.leftContainer .headerInfo').style.display = 'block';
+      document.getElementById('fitScreenImage').style.display = 'block';
+
+      // Hide all other right screen content initially
+      textItems.forEach(item => item.style.display = 'none');
+  } else {
+      // For desktop, display the first text item as active
+      textItems[0].classList.add('active');
+      textItems[0].style.display = 'block';
+  }
+});
+
+// Add existing event listeners and other logic as needed
