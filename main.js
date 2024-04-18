@@ -2,6 +2,7 @@
 // hand-made by Haotian Wang, 04/17/2024
 // i was listening to Grimes on repeat
 // for maintenance request email @haotianwang.design@gmail.com
+// bro window resize is such a pain in the ass
 
 const textContainer = document.querySelector('.rightScreenContainer');
 const textItems = textContainer.querySelectorAll('.rightScreenContent');
@@ -111,18 +112,71 @@ toggleButton.addEventListener('click', () => {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-  if (window.innerWidth <= 768) {
-      // Show only the header information and initial image on load for mobile
-      document.querySelector('.leftContainer .headerInfo').style.display = 'block';
-      document.getElementById('fitScreenImage').style.display = 'block';
+  const toggleButtons = document.querySelectorAll('.categoriesMenuButton');
+  const textItems = document.querySelectorAll('.rightScreenContent');
+  const dropdownMenu = document.getElementById('dropdownMenu');
+  const toggleButton = document.getElementById('toggleButton');
 
-      // Hide all other right screen content initially
-      textItems.forEach(item => item.style.display = 'none');
-  } else {
-      // For desktop, display the first text item as active
-      textItems[0].classList.add('active');
-      textItems[0].style.display = 'block';
+  // Function to control visibility of content sections
+  function setActiveText(index) {
+    textItems.forEach((item, idx) => {
+      item.style.display = idx === index ? 'block' : 'none'; // Show only the active item
+    });
   }
-});
 
-// Add existing event listeners and other logic as needed
+  // Set the default visibility for desktop
+  if (window.innerWidth > 768) {
+    setActiveText(0); // Display the first item by default on desktop
+  } else {
+    setActiveText(null); // No content displayed by default on mobile
+  }
+
+  // Button click events
+  toggleButtons.forEach((button, index) => {
+    button.addEventListener('click', function() {
+      setActiveText(index);
+      if (window.innerWidth <= 768) {
+        dropdownMenu.style.display = 'none'; // Hide the menu after selection on mobile
+      }
+    });
+  });
+
+  // Toggle menu visibility on mobile
+  toggleButton.addEventListener('click', function() {
+    if (dropdownMenu.style.display === 'block' || dropdownMenu.style.display === '') {
+      dropdownMenu.style.display = 'none';
+    } else {
+      dropdownMenu.style.display = 'block';
+    }
+  });
+
+  // Ensure correct display on resize
+  window.addEventListener('resize', function() {
+    if (window.innerWidth > 768) {
+      // Desktop-specific adjustments
+      dropdownMenu.style.display = 'block'; // Ensure the dropdown is always visible on desktop
+      document.querySelectorAll('.leftContainer .headerInfo, .leftContainer .footerInfo').forEach(elem => {
+        elem.style.display = 'block'; // Ensure all leftContainer elements are visible on desktop
+      });
+  
+      // Ensure that the appropriate rightScreenContent is displayed
+      if (!textItems[currentActiveText] || textItems[currentActiveText].style.display === 'none') {
+        setActiveText(currentActiveText); // Ensure current or default content is visible
+      }
+    } else {
+      // Mobile-specific adjustments
+      dropdownMenu.style.display = 'none'; // Keep the dropdown hidden until toggled on mobile
+      textItems.forEach(item => item.style.display = 'none'); // Hide all right screen content on mobile initially
+    }
+  });
+  
+  // Function to set active text, improved to ensure visibility handling
+  function setActiveText(index) {
+    textItems.forEach((item, idx) => {
+      item.style.display = 'none'; // Hide all first
+    });
+    if (textItems[index]) {
+      textItems[index].style.display = 'block'; // Show only the active item
+    }
+  }  
+});
