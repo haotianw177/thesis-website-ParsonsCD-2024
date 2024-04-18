@@ -28,7 +28,7 @@ a:hover {
 }
 
 #fitScreenImage {
-  max-width: 50%;  /* Scale down the image to 80% of the container width */
+  max-width: 58%;  /* Scale down the image to 80% of the container width */
   height: auto;  /* Maintain aspect ratio */
   display: block;  /* Ensures the image block behaves properly */
   margin: auto;  /* Centers the image horizontally within the container */
