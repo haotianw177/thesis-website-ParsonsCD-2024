@@ -117,6 +117,27 @@ a {
   margin-bottom: 30px;  /* Removes bottom margin from the last image to maintain container padding */
 }
 
+.contact {
+  text-align: left;
+  padding-left: same as h3 padding; /* Adjust this value based on your layout */
+  margin-bottom: 40px;
+}
+
+.contact h4 {
+  margin: 10px 0; /* Example margin, adjust based on design needs */
+  color: black; /* Or any color that fits your design */
+}
+
+.contact a {
+  color: blue; /* Color for links */
+  text-decoration: none; /* Removes underline from links */
+}
+
+.contact a:hover {
+  text-decoration: underline; /* Adds underline on hover for better UX */
+}
+
+
 .active {
   display: block;
 }
