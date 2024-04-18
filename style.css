@@ -23,6 +23,10 @@ a {
   /* font-style: italic; */
 }
 
+a:hover {
+  text-decoration: underline;
+}
+
 .leftContainer {
   position: relative;  /* This is correct as it keeps the container in the normal document flow */
   top: 0;
