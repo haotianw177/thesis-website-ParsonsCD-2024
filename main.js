@@ -159,25 +159,27 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // jquery for image preview
-$(document).ready(function() {
-  // When an image is clicked
-  $('img').click(function(e) {
-    e.stopPropagation(); // Prevent the click event from bubbling up to higher elements
-    var src = $(this).attr('src'); // Get the source of the clicked image
-    $('#imagePreviewModal img').attr('src', src);
-    $('#imagePreviewModal').css('display', 'flex'); // Make sure to set display to flex
-    $('#imagePreviewModal').fadeIn(); // Display the modal
-  });
-  
-  // Click anywhere on the modal, including the image, to close it
-  $('#imagePreviewModal').click(function() {
-    $(this).fadeOut(); // Hide the modal
-  });
-  
-  // Clicking on the modal image also closes the modal
-  // This handler is no longer stopping propagation, so clicks will bubble up to the modal
-  $('#imagePreviewModal img').click(function() {
-    $('#imagePreviewModal').fadeOut(); // Also hides the modal
-  });
-});
+// $(document).ready(function() {
+//   // When any image is clicked
+//   $('img').on('click', function(e) {
+//       e.stopPropagation(); // Prevent the click from bubbling up
+//       var src = $(this).attr('src'); // Get the source of the clicked image
+//       $('#imagePreviewModal img').attr('src', src); // Set the src for the modal image
+//       $('#imagePreviewModal').fadeIn(300); // Fade in the modal
+//       $('#imagePreviewModal').css('display', 'flex'); // Ensure it is displayed as flex
+//   });
+
+//   // Click on the modal background to close
+//   $('#imagePreviewModal').on('click', function() {
+//       $(this).fadeOut(300, function() {
+//           $('#imagePreviewModal img').attr('src', ''); // Clear the src
+//       }); // Fade out the modal
+//   });
+
+//   // Stop propagation when clicking on the modal image
+//   $('#imagePreviewModal img').on('click', function(e) {
+//       e.stopPropagation(); // Prevent the click from closing the modal
+//   });
+// });
+
 
