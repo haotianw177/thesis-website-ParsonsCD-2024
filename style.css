@@ -155,10 +155,11 @@ body::-webkit-scrollbar {
   text-decoration: underline; /* Adds underline on hover for better UX */
 }
 
-
 .active {
   display: block;
 }
+
+
 
 h1 {
   font-size: 2em;
@@ -191,6 +192,8 @@ h4 {
   color: blue;
 }
 
+h5{}
+
 /* h6 is for student names */
 h6 {
   text-align: left;
@@ -201,13 +204,13 @@ h6 {
 }
 
 /* p is for the leftContainer intro and end text */
-p {
+/* p {
   text-align: left;
   font-size: 1.6em;
   color: black;
   margin: 20px;
   padding: 0;
-}
+} */
 
 
 *, *:before, *:after {

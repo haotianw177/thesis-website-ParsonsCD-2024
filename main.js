@@ -1,4 +1,4 @@
-// la la la la la la________________________ what loading time?
+// la la la la la la________________________ what loading speed?
 // hand-made by Haotian Wang, 04/17/2024
 // i was listening to Grimes on repeat
 // for maintenance request email @haotianwang.design@gmail.com
@@ -23,7 +23,7 @@ window.setActiveText = function (index) {
         textItems[currentActiveText].classList.add('active');
     }
     // Hide dropdown if in phone mode after selecting an item
-    if (window.innerWidth <= 768) {  // Assuming 768px as the breakpoint for mobile
+    if (window.innerWidth <= 768) { 
         dropdownMenu.style.display = 'none';
     }
 }
@@ -53,29 +53,6 @@ function displayButtonsAccordingToViewport() {
 
 window.addEventListener('load', displayButtonsAccordingToViewport);
 window.addEventListener('resize', displayButtonsAccordingToViewport);
-
-$(document).ready(function() {
-  // When an image is clicked
-  $('img').click(function(e) {
-    e.stopPropagation(); // Prevent the click event from bubbling up to higher elements
-    var src = $(this).attr('src'); // Get the source of the clicked image
-    $('#imagePreviewModal img').attr('src', src);
-    $('#imagePreviewModal').css('display', 'flex'); // Make sure to set display to flex
-    $('#imagePreviewModal').fadeIn(); // Display the modal
-  });
-  
-  // Click anywhere on the modal, including the image, to close it
-  $('#imagePreviewModal').click(function() {
-    $(this).fadeOut(); // Hide the modal
-  });
-  
-  // Clicking on the modal image also closes the modal
-  // This handler is no longer stopping propagation, so clicks will bubble up to the modal
-  $('#imagePreviewModal img').click(function() {
-    $('#imagePreviewModal').fadeOut(); // Also hides the modal
-  });
-});
-
 
 for (let i = 0; i < toggleButtons.length; i++) {
   toggleButtons[i].addEventListener('click', function() {
@@ -180,3 +157,27 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }  
 });
+
+// jquery for image preview
+$(document).ready(function() {
+  // When an image is clicked
+  $('img').click(function(e) {
+    e.stopPropagation(); // Prevent the click event from bubbling up to higher elements
+    var src = $(this).attr('src'); // Get the source of the clicked image
+    $('#imagePreviewModal img').attr('src', src);
+    $('#imagePreviewModal').css('display', 'flex'); // Make sure to set display to flex
+    $('#imagePreviewModal').fadeIn(); // Display the modal
+  });
+  
+  // Click anywhere on the modal, including the image, to close it
+  $('#imagePreviewModal').click(function() {
+    $(this).fadeOut(); // Hide the modal
+  });
+  
+  // Clicking on the modal image also closes the modal
+  // This handler is no longer stopping propagation, so clicks will bubble up to the modal
+  $('#imagePreviewModal img').click(function() {
+    $('#imagePreviewModal').fadeOut(); // Also hides the modal
+  });
+});
+
