@@ -55,7 +55,7 @@ body::-webkit-scrollbar {
   background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
-.headerInfo, .categoriesMenuButton, .footerInfo {
+.headerInfo, .categoriesMenuButton{
   background-color: transparent; 
   width: 85%;  /* Standardizes width for alignment */
   padding: 5px;  /* Ensures padding inside each element */
@@ -67,11 +67,6 @@ body::-webkit-scrollbar {
   justify-content: flex-start;  /* Ensures content aligns to the left */
   text-align: left;
 }
-
-.firstLine {
-  font-size: 1.4em; /* Adjust size as necessary */
-}
-
 
 .categoriesMenuButton {
   width: auto;
@@ -93,6 +88,35 @@ body::-webkit-scrollbar {
 .info {
   margin-top: 20px;  /* Adds a bit more space after the last menu button */
 }
+
+.footerInfo {
+  background-color: transparent;
+  width: 85%;
+  padding: 5px;
+  border-radius: 20px;
+  margin: 10px 0;
+  border: none;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.footerLink {
+  color: black;
+  text-decoration: none;
+  font-family: "neue-haas-grotesk-text", sans-serif;
+  font-size: 1em; /* Adjust size as needed */
+}
+
+.footerLink:hover {
+  text-decoration: underline;
+}
+
+
+
+
 
 .rightScreenContainer {
   /* background-color: blue; */
@@ -209,14 +233,14 @@ h6 {
   padding: 0;
 }
 
-/* p is for the leftContainer intro and end text */
-/* p {
+/* p is for footer info */
+p {
   text-align: left;
-  font-size: 1.6em;
+  font-size: 1em;
   color: black;
   margin: 20px;
   padding: 0;
-} */
+}
 
 
 *, *:before, *:after {
