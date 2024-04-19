@@ -68,6 +68,11 @@ body::-webkit-scrollbar {
   text-align: left;
 }
 
+.firstLine {
+  font-size: 1.4em; /* Adjust size as necessary */
+}
+
+
 .categoriesMenuButton {
   width: auto;
   height: auto;  /* Adjusts height to content */
@@ -161,7 +166,7 @@ body::-webkit-scrollbar {
 }
 
 
-
+/* h1 for title of the site */
 h1 {
   font-size: 2em;
   color: black;
