@@ -35,6 +35,8 @@ a:hover {
 }
 
 .leftContainer {
+  background-color: transparent; 
+  z-index: 1010;
   position: relative;  /* This is correct as it keeps the container in the normal document flow */
   top: 0;
   left: 20px;  /* All children will inherit this starting position */
@@ -54,8 +56,8 @@ body::-webkit-scrollbar {
 }
 
 .headerInfo, .categoriesMenuButton, .footerInfo {
+  background-color: transparent; 
   width: 85%;  /* Standardizes width for alignment */
-  background-color: white;
   padding: 5px;  /* Ensures padding inside each element */
   border-radius: 20px;
   margin: 10px 0;  /* Standardizes and adds vertical spacing */
@@ -68,7 +70,6 @@ body::-webkit-scrollbar {
 
 .categoriesMenuButton {
   width: auto;
-  background-color: white;
   height: auto;  /* Adjusts height to content */
   padding: 5px;
   border-radius: 20px;
