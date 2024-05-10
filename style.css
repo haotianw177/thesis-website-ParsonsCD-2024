@@ -1,9 +1,15 @@
 * {
-  font-family: "neue-haas-grotesk-text", sans-serif;
-  font-weight: 400;
+  font-family: 'Authentic', sans-serif;  font-weight: 400;
   font-style: normal;
   box-sizing: border-box;
   cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="32" height="32"><circle cx="8" cy="8" r="7" fill="black"/></svg>') 6 6, auto;
+}
+
+@font-face {
+  font-family: 'Authentic';
+  src: url('fonts/1.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
 
 html, body {
@@ -27,6 +33,26 @@ a:hover {
   text-decoration: underline;
 }
 
+.mainContainer {
+  display: flex;
+  position: relative; /* Make sure this is relatively positioned if it's not already */
+  height: calc(100% - 40px); /* Adjust height as necessary, subtracting 40px for the 20px top and bottom spaces */
+  padding-top: 20px; /* Add 20px space on the top */
+  padding-bottom: 20px; /* Add 20px space on the bottom */
+}
+
+.mainContainer::after {
+  content: "";
+  position: absolute;
+  left: 27%; /* This places the divider in the middle */
+  top: 30px;
+  bottom: 0px;
+  width: 2px; /* Thickness of the line */
+  background-color: #000; /* Color of the line */
+  transform: translateX(-50%); /* Ensures the line is exactly centered */
+}
+
+
 #fitScreenImage {
   max-width: 58%;  /* Scale down the image to 80% of the container width */
   height: auto;  /* Maintain aspect ratio */
@@ -45,9 +71,12 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: flex-start;  /* Ensures all children align to the left edge */
-  padding: 10px 0;  /* Maintains padding for all children */
+  padding: 0px 0;  /* Maintains padding for all children */
   box-sizing: border-box;  /* Includes padding in width calculation */
+  margin-top: 20px;
 }
+
+
 
 /* hide left scroll bar, if it works don't touch it */
 body::-webkit-scrollbar {
@@ -55,35 +84,57 @@ body::-webkit-scrollbar {
   background: transparent;  /* Optional: just make scrollbar invisible */
 }
 
-.headerInfo, .categoriesMenuButton{
+.headerInfo{
+  margin-bottom: 20px;
   background-color: transparent; 
   width: 85%;  /* Standardizes width for alignment */
-  padding: 5px;  /* Ensures padding inside each element */
-  border-radius: 20px;
-  margin: 10px 0;  /* Standardizes and adds vertical spacing */
+  padding: 0px;  /* Ensures padding inside each element */
+  /* border-radius: 20px; */
+  margin: 0px 0;  /* Standardizes and adds vertical spacing */
   border: none;
   display: flex;
   align-items: center;
   justify-content: flex-start;  /* Ensures content aligns to the left */
   text-align: left;
+  margin-bottom:20px;
 }
 
 .categoriesMenuButton {
-  width: auto;
-  height: auto;  /* Adjusts height to content */
-  padding: 5px;
-  border-radius: 20px;
-  margin: 10px 0;
-  transition: background-color 0.3s ease-in-out;
-  display: block;  /* Changed from flex to block for standard flow */
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  border: none; 
+  width: 300px;  /* Use the full width of the parent container */
+  display: block;  /* Block display to fill the width */
+  padding: 0px 0px;  /* Padding to space the text inside the button */
+  background-color: transparent;  /* Background remains transparent */
+  text-align: left;  /* Align text to the left */
+  box-sizing: border-box;  /* Include padding in width calculation */
+  
 }
 
 .categoriesMenuButton:hover {
-  background-color: blue;  /* Keeps hover effect */
-  text-decoration: underline;
+  background-color: blue;  /* Background color on hover */
 }
+
+/* Targets the first hr inside a parent if it is the very first child */
+.dropdown-menu > div:first-child > hr:first-child {
+  margin-top: 1px;  /* Adjust as needed */
+  margin-bottom: 1px;
+}
+
+/* Existing styles for adjacent hr and button */
+.categoriesMenuButton + hr,
+hr + .categoriesMenuButton {
+  margin-top: 1px;
+  margin-bottom: 1px;
+  color: #000;
+}
+
+/* Optionally target the last hr if necessary */
+.dropdown-menu > div:last-child > hr:last-child {
+  margin-top: 1px;
+  margin-bottom: 1px;
+}
+
+
 
 .info {
   margin-top: 20px;  /* Adds a bit more space after the last menu button */
@@ -92,8 +143,7 @@ body::-webkit-scrollbar {
 .footerInfo {
   background-color: transparent;
   width: 85%;
-  padding: 5px;
-  border-radius: 20px;
+  /* padding: 5px; */
   margin: 10px 0;
   border: none;
   display: flex;
@@ -101,12 +151,12 @@ body::-webkit-scrollbar {
   align-items: center;
   justify-content: flex-start;
   text-align: left;
+  margin-top:20px;
 }
 
 .footerLink {
   color: black;
   text-decoration: none;
-  font-family: "neue-haas-grotesk-text", sans-serif;
   font-size: 1em; /* Adjust size as needed */
 }
 
@@ -114,16 +164,8 @@ body::-webkit-scrollbar {
   text-decoration: underline;
 }
 
-
-
-
-
-.rightScreenContainer {
-  /* background-color: blue; */
-}
-
 .rightScreenContent {
-  padding-top: 20px;
+  margin-top: 20px;
   display: none;
   position: fixed;
   left: 30%;
@@ -131,6 +173,39 @@ body::-webkit-scrollbar {
   bottom: 0;
   width: 70%;
   overflow-y: scroll;
+}
+
+hr{
+  color: black;
+}
+
+.contact hr + h4 {
+  margin-top: 1px; /* Decrease this value to reduce space above h2 */
+}
+
+/* Reduce margin for hr immediately following h2 */
+.contact h4 + hr {
+  margin-top: 1px; /* Decrease this value to reduce space below h2 */
+}
+
+/* Optionally, adjust the bottom margin of hr to control space below */
+.contact hr {
+  width: 95%;
+  border: none; /* Removes default border */
+  background-color: black; /* Sets the color of the line */
+  margin: 0; /* Removes default margin to allow line to stretch fully */
+  margin-top: 0px;  /* Space above the first hr and below the second hr */
+  margin-bottom: 1px;
+}
+
+.rightScreenContent hr {
+
+}
+
+.rightScreenContent .contact {
+  margin-top: 1px;  /* Removes top margin from contact div */
+  margin-bottom: 1px;  /* Removes bottom margin from contact div */
+  padding: 1px 0; /* Optional: Adds padding inside the contact div for internal spacing */
 }
 
 .rightScreenContent h2 {
@@ -146,15 +221,16 @@ body::-webkit-scrollbar {
 } */
 
 .imageContainer {
+  margin-left: 0;
   margin-top: 50px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  /* align-items: center;
+  justify-content: center; */
 }
 
 .imageContainer img {
-  width: auto;  /* Keeps width controlled by the container or image size */
+  width: 95%;  /* Keeps width controlled by the container or image size */
   height: auto;  /* Maintains the aspect ratio */
   margin-right: 30px;
   margin-bottom: 30px;  /* Adds margin only at the bottom of each image */
@@ -192,7 +268,7 @@ body::-webkit-scrollbar {
 
 /* h1 for title of the site */
 h1 {
-  font-size: 2em;
+  font-size: 1em;
   color: black;
 }
 
@@ -227,7 +303,7 @@ h5{}
 /* h6 is for student names */
 h6 {
   text-align: left;
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: black;
   margin: 0;
   padding: 0;
@@ -252,7 +328,7 @@ img, video, canvas, iframe {
   height: auto;
 }
 
-#imagePreviewModal {
+/* #imagePreviewModal {
   display: none;
   position: fixed;
   z-index: 1001;
@@ -264,7 +340,7 @@ img, video, canvas, iframe {
   background-color: rgba(0,0,0,0.8);
   align-items: center;
   justify-content: center;
-}
+} */
 
 
 #imagePreviewModal img {
@@ -274,37 +350,11 @@ img, video, canvas, iframe {
 }
 
 
-@keyframes rotateImage {
-  from {
-      transform: rotate(0deg);
-  }
-  to {
-      transform: rotate(360deg);
-  }
-}
-
-@media screen and (min-width: 769px) {
-  img[src="images/earth.png"] {
-      animation: rotateImage 20s linear infinite;
-      display: block;
-      position: fixed;  
-      top: 30%;        
-      left: 10%;     
-      transform: translate(-50%, -50%); 
-      max-width: 30%;   
-      max-height: 30%; 
-      z-index: 1000;    
-      pointer-events: none;  
-  }
-}
-
 @media screen and (max-width: 768px) {
-  img[src="images/earth.png"] {
-      display: none; 
+  .categoriesMenuButton {
+    display: block;  
   }
-}
 
-@media screen and (max-width: 768px) {
   .leftContainer {
       width: 100%;
       position: static;
@@ -318,7 +368,6 @@ img, video, canvas, iframe {
   }
 
   .rightScreenContent {
-    padding-top: 20px;
       position: static;
       width: 100%;
       display: none;
@@ -333,7 +382,7 @@ img, video, canvas, iframe {
 @media screen and (max-width: 768px) {
   .leftContainer {
       margin-left: 5px;  /* Adds left margin to leftContainer */
-      padding-top: 30px;  /* Keeps your existing top padding */
+       /* Keeps your existing top padding */
   }
 
   .rightScreenContainer {
@@ -366,9 +415,7 @@ img, video, canvas, iframe {
       z-index: 1001;  /* Ensure it's on top but below header */
   }
 
-  .leftContainer {
-      padding-top: 60px;  /* Enough padding to avoid overlap with header/toggle button */
-  }
+
 }
 
 @media screen and (max-width: 768px) {
@@ -380,10 +427,6 @@ img, video, canvas, iframe {
     display: none; /* Initially hide all right screen content */
   }
 
-  #page1 {
-    display: none; /* Hide the right screen container that includes #fitScreenImage */
-  }
-
   #fitScreenImage {
     display: block; /* Ensure the initial image is displayed */
     width: 100%; /* Adjust width to fit the screen */
@@ -393,6 +436,9 @@ img, video, canvas, iframe {
   #toggleButton {
     display: block;  /* Ensure toggle button is visible */
   }
-}
 
+  .mainContainer::after {
+    display: none;
+  }
+}
 

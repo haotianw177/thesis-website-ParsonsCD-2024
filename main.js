@@ -42,17 +42,18 @@ toggleButton.addEventListener('click', () => {
     }
 });
 
-// Adjust display based on viewport size
 function displayButtonsAccordingToViewport() {
-    if (window.innerWidth > 768) {  // Laptop view
-        dropdownMenu.style.display = 'block';  // Always show menu
-    } else {
-        dropdownMenu.style.display = 'none';  // Mobile view, hide menu initially
-    }
+  if (window.innerWidth <= 768) {
+      // Ensures that the dropdown menu is shown on mobile on load
+      dropdownMenu.style.display = 'block'; // Change to 'block' to show on mobile
+  } else {
+      dropdownMenu.style.display = 'block'; // Ensures it's always shown on larger screens
+  }
 }
 
 window.addEventListener('load', displayButtonsAccordingToViewport);
 window.addEventListener('resize', displayButtonsAccordingToViewport);
+
 
 for (let i = 0; i < toggleButtons.length; i++) {
   toggleButtons[i].addEventListener('click', function() {
@@ -117,6 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+  
 
   // Toggle menu visibility on mobile
   toggleButton.addEventListener('click', function() {
